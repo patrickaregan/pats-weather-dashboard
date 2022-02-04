@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Main -->
+    <main>
+
+        <!-- Header row -->
+        <div class="row">
+            <div class="col col-sm-12 col-md-12">
+                <header>
+                    <h1>Pat's Weather Dashboard</h1>
+                </header>
+            </div>
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="col col-sm-12 col-md-2">
+                <!-- Search Input -->
+                <div class="searchInput">
+                    <form>
+                        <label for="city">Search for a City:</label>
+                        <input type="text" placeholder="enter a city" name="city" id="city" class="form-input" />
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                    <hr />
+                </div>
+            </div>
+            <div class="col col-sm-12 col-md-10">
+                <!-- Search Output -->
+                <div class="searchOutput">
+                    
+                    <!-- City Info -->
+                    <div class="cityInfo">
+                        <p>City info</p>
+                    </div>
+
+                    <!-- Five Day Forecast -->
+                    <div class="fiveDayForcast">
+                        <p>Five Day forecast</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
