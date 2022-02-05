@@ -2,7 +2,11 @@
 // Geocoding API: http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 // One Call API:  https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 
-var searchFormEl = $('#search-form');
+var searchFormEl = $("#search-form");
+var cityNameEl = $(".cityName");
+var weatherIcon = $(".weatherIcon");
+var currentDate = moment().format("l");
+
 
 function handleFormSubmit(event) {
 
@@ -38,6 +42,7 @@ function handleFormSubmit(event) {
                 console.log("Lat: " + lattitude);
                 console.log("Lon: " + longitude);
                 console.log("Loc: " + location);
+                cityNameEl.text(location + " (" + currentDate + ")");
 
                 // get weather data
                 var apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&exclude=alerts&units=imperial&lang=en&appid=41acdc298e9f5bb9684ae3f719dae78a";
@@ -47,6 +52,10 @@ function handleFormSubmit(event) {
                     if (response.ok) {
                         response.json().then(function(data) {
                             console.log(data);
+                            console.log(data.current.weather[0].icon);
+                            var icon = data.current.weather[0].icon;
+                            var iconDesc = data.current.weather[0].description;
+                            weatherIcon.html("<img src='http://openweathermap.org/img/wn/" + icon + "@2x.png' width='50px' height='50px' alt='" + iconDesc + "'>");
                         })
                     } else {
                         console.log('Error: Weather Data Not Found');
