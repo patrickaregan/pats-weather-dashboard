@@ -63,9 +63,16 @@ header h1 {
 }
 
 .futureWeather {
+    
     font-size: 18px;
     font-weight: bold;
     margin: 10px 10px 10px 5px;
+}
+
+.futureWeatherLabel {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 0 5px;
 }
 
 .cityName {
@@ -103,8 +110,39 @@ header h1 {
     padding: 2px 10px;
 }
 
+.forecastSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .forecastPanel {
     background-color: #33475a;
     color: white;
+    width: 130px;
+}
+
+.forecastDate {
+    font-size: 12px;
+    margin: 5px 20px 0 5px;
+}
+
+.forecastIcon {
+    margin: 0 20px 0 5px;
+}
+
+.forecastTemp {
+    font-size: 12px;
+    margin: 2px 20px 0 5px;
+}
+
+.forecastWind {
+    font-size: 12px;
+    margin: 5px 20px 0 5px;
+}
+
+.forecastHumidity {
+    font-size: 12px;
+    margin: 5px 20px 10px 5px;
 }
 

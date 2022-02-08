@@ -10,6 +10,7 @@ var cityWindEl = $(".cityWind");
 var cityHumidityEl = $(".cityHumidity");
 var cityUVIndexEl = $(".cityUVIndex");
 var currentDate = moment().format("l");
+var forecastSectionEl = $(".forecastSection");
 
 var getUnixDate = function(dateInput) {
     var result = "";
@@ -69,7 +70,6 @@ function handleFormSubmit(event) {
                     if (response.ok) {
                         response.json().then(function(data) {
                             console.log(data);
-                            console.log(data.current.temp);
                             var icon = data.current.weather[0].icon;
                             var iconDesc = data.current.weather[0].description;
                             var temp = "Temp: " + data.current.temp + "&deg;" + "F";
@@ -88,17 +88,17 @@ function handleFormSubmit(event) {
                                 cityUVIndexEl.html("UV Index: <span class='bg-danger colorCodedUVIndex'>" + uvindex + "</span>");
                             }
                             // future weather
+                            var forecastHtml = "";
                             for(var i = 0; i < 5; i++) {
                                 var forecastDate = getUnixDate(data.daily[i].dt);
                                 var forecastIcon = data.daily[i].weather[0].icon;
+                                var forecastIconDesc = data.daily[i].weather[0].description;
+                                var forecastIconHtml = "<img src='https://openweathermap.org/img/wn/" + forecastIcon + "@2x.png' width='25px' height='25px' alt='" + forecastIconDesc + "'>";
                                 var forecastTemp = data.daily[i].temp.max + "&deg;" + "F";
                                 var forecastWind = data.daily[i].wind_speed + " MPH";
                                 var forecastHumidity = data.daily[i].humidity + " %";
-                                console.log(forecastDate);
-                                console.log(forecastIcon);
-                                console.log(forecastTemp);
-                                console.log(forecastWind);
-                                console.log(forecastHumidity);
+                                forecastHtml += "<div class='forecastPanel'><p class='forecastDate'>" + forecastDate + "</p><p class='forecastIcon'>" + forecastIconHtml + "</p><p class='forecastTemp'>" + forecastTemp + "</p><p class='forecastWind'>" + forecastWind + "</p><p class='forecastHumidity'>" + forecastHumidity + "</p></div>";
+                                forecastSectionEl.html(forecastHtml);
                             }
                         })
                     } else {
