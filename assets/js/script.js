@@ -11,6 +11,15 @@ var cityHumidityEl = $(".cityHumidity");
 var cityUVIndexEl = $(".cityUVIndex");
 var currentDate = moment().format("l");
 
+var getUnixDate = function(dateInput) {
+    console.log(dateInput);
+    var result = "";
+    var date = new Date(dateInput * 1000);
+    console.log(date);
+    result = moment(date).format("l");
+    return result;
+}
+
 
 function handleFormSubmit(event) {
 
@@ -80,7 +89,10 @@ function handleFormSubmit(event) {
                             } else {
                                 cityUVIndexEl.html("UV Index: <span class='bg-danger colorCodedUVIndex'>" + uvindex + "</span>");
                             }
-                            
+                            // future weather
+                            for(var i = 0; i < 5; i++) {
+                                console.log(getUnixDate(data.daily[i].dt));
+                            }
                         })
                     } else {
                         console.log('Error: Weather Data Not Found');

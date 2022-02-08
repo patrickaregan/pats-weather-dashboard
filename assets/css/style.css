@@ -103,5 +103,8 @@ header h1 {
     padding: 2px 10px;
 }
 
+.forecastPanel {
+    background-color: #33475a;
+    color: white;
+}
 
-/* #33475a
