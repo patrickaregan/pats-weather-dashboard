@@ -12,10 +12,8 @@ var cityUVIndexEl = $(".cityUVIndex");
 var currentDate = moment().format("l");
 
 var getUnixDate = function(dateInput) {
-    console.log(dateInput);
     var result = "";
     var date = new Date(dateInput * 1000);
-    console.log(date);
     result = moment(date).format("l");
     return result;
 }
@@ -91,7 +89,16 @@ function handleFormSubmit(event) {
                             }
                             // future weather
                             for(var i = 0; i < 5; i++) {
-                                console.log(getUnixDate(data.daily[i].dt));
+                                var forecastDate = getUnixDate(data.daily[i].dt);
+                                var forecastIcon = data.daily[i].weather[0].icon;
+                                var forecastTemp = data.daily[i].temp.max + "&deg;" + "F";
+                                var forecastWind = data.daily[i].wind_speed + " MPH";
+                                var forecastHumidity = data.daily[i].humidity + " %";
+                                console.log(forecastDate);
+                                console.log(forecastIcon);
+                                console.log(forecastTemp);
+                                console.log(forecastWind);
+                                console.log(forecastHumidity);
                             }
                         })
                     } else {
