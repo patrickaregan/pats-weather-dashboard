@@ -54,7 +54,22 @@ header h1 {
 .searchInput hr {
     border: 1px solid grey;
     margin-top: 10px;
+    margin-bottom: 0;
     padding: 0;
+}
+
+.pastSearches {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10px 0 10px;
+    width: 100%;
+}
+
+.pastSearches button {
+    margin-top: 5px;
+    padding: 2px;
+    width: 100%;
 }
 
 .cityInfo {

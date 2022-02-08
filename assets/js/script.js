@@ -11,12 +11,34 @@ var cityHumidityEl = $(".cityHumidity");
 var cityUVIndexEl = $(".cityUVIndex");
 var currentDate = moment().format("l");
 var forecastSectionEl = $(".forecastSection");
+var pastSearches = [];
+var pastSearchesEl = $(".pastSearches");
 
 var getUnixDate = function(dateInput) {
     var result = "";
     var date = new Date(dateInput * 1000);
     result = moment(date).format("l");
     return result;
+}
+
+function loadPastSearches() {
+    
+    var searchArray = localStorage.getItem("weather-dashboard");
+    if (!searchArray) {
+        pastSearches = [];
+        return false;
+    } 
+    pastSearches = JSON.parse(searchArray);
+    var htmlContent = "";
+    for(var i = 0; i < pastSearches.length; i++) {
+        console.log("past search string: " + pastSearches[i]);
+        htmlContent += "<button class='btn btn-secondary'>" + pastSearches[i] + "</button>";
+        pastSearchesEl.html(htmlContent);
+    }
+}
+
+function savePastSearch() {
+    localStorage.setItem("weather-dashboard",JSON.stringify(pastSearches));
 }
 
 
@@ -62,6 +84,11 @@ function handleFormSubmit(event) {
                 } catch(error) {
                     alert("Sorry, we could not find any data for that city!");
                 }
+                // if the coordinate lookup was OK then save the search string to local storage
+                if(!pastSearches.includes(searchString)) {
+                    pastSearches.push(searchString);
+                }
+                savePastSearch();
                 // get weather data
                 var apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&exclude=alerts&units=imperial&lang=en&appid=41acdc298e9f5bb9684ae3f719dae78a";
                 fetch(apiURL)
@@ -122,6 +149,8 @@ function handleFormSubmit(event) {
 }
 
 searchFormEl.on("submit", handleFormSubmit);
+
+loadPastSearches();
 
 
 
