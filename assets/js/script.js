@@ -233,7 +233,10 @@ function runWeatherSearch(searchString) {
                                 var forecastIcon = data.daily[i].weather[0].icon;
                                 var forecastIconDesc = data.daily[i].weather[0].description;
                                 var forecastIconHtml = "<img src='https://openweathermap.org/img/wn/" + forecastIcon + "@2x.png' width='25px' height='25px' alt='" + forecastIconDesc + "'>";
-                                var forecastTemp = "Temp: " + data.daily[i].temp.max + "&deg;" + "F";
+                                var forecastTempMin = data.daily[i].temp.min;
+                                var forecastTempMax = data.daily[i].temp.max;
+                                var forecastTempAvg = (forecastTempMin + forecastTempMax) / 2;
+                                var forecastTemp = "Temp: " + parseFloat(forecastTempAvg).toFixed(2) + "&deg;" + "F";
                                 var forecastWind = "Wind: " + data.daily[i].wind_speed + " MPH";
                                 var forecastHumidity = "Humidity: " + data.daily[i].humidity + " %";
                                 forecastHtml += "<div class='forecastPanel'><p class='forecastDate'>" + forecastDate + "</p><p class='forecastIcon'>" + forecastIconHtml + "</p><p class='forecastTemp'>" + forecastTemp + "</p><p class='forecastWind'>" + forecastWind + "</p><p class='forecastHumidity'>" + forecastHumidity + "</p></div>";
