@@ -161,3 +161,17 @@ header h1 {
     margin: 5px 20px 10px 5px;
 }
 
+/* MEDIA QUERY FOR TABLETS AND SMALLER */
+@media screen and (max-width: 768px) {
+  
+    .forecastSection {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .forecastPanel {
+        width: 100%;
+        margin: 10px 0 10px 0;
+    }
+  
+  }
